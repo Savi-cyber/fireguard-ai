@@ -1,138 +1,252 @@
-# HARIS – Hybrid AI Risk Intelligence System for Wildfires
+# 🔥 FireGuard AI
 
-A professional decision-support dashboard that predicts wildfire risk using:
-- Historical satellite fire data (Type‑1)
-- Current weather conditions (Type‑2)
-- Hybrid decision logic
+### AI-Powered Hybrid Wildfire Risk Prediction System
 
----
+FireGuard AI is a hybrid wildfire risk assessment system that combines **historical fire activity** with **environmental and climate-related conditions** to estimate wildfire risk.
 
-## Project Structure
-
-```
-/project-root
- ├── backend
- │    ├── main.py
- │    ├── hybrid_logic.py
- │    ├── models
- │    │    ├── type1_model.pkl
- │    │    └── type2_model.pkl
- │    └── requirements.txt
- │
- ├── frontend
- │    ├── src
- │    │    ├── components
- │    │    │    ├── Header.jsx
- │    │    │    ├── InputType1.jsx
- │    │    │    ├── InputType2.jsx
- │    │    │    ├── RiskOutput.jsx
- │    │    │    ├── ExplainableAI.jsx
- │    │    │    ├── FireHistoryChart.jsx
- │    │    │    ├── WeatherChart.jsx
- │    │    │    ├── HybridRiskMeter.jsx
- │    │    │    └── AlertSound.jsx
- │    │    ├── services
- │    │    │    └── api.js
- │    │    ├── styles
- │    │    │    ├── theme.css
- │    │    │    └── dashboard.css
- │    │    ├── App.jsx
- │    │    └── index.js
- │    └── public
- │         └── sounds
- │             └── alert.mp3
- └── README.md
-```
+The system uses two independent prediction models and combines their outputs to generate a final wildfire risk level.
 
 ---
 
-## Run Instructions
+## 🚀 Project Overview
 
-### Backend
+Wildfire risk is influenced by multiple factors. Historical fire activity alone may not capture changing environmental conditions, while climate/weather conditions alone may not represent existing fire activity.
 
-```bash
+FireGuard AI addresses this by combining two prediction approaches:
+
+- **Type-1 Model** → Historical and fire-activity based risk
+- **Type-2 Model** → Climate/environmental condition based risk
+- **Hybrid Decision Layer** → Combines both predictions into a final risk level
+
+### Risk Levels
+
+- 🟢 Low
+- 🟡 Medium
+- 🔴 High
+
+---
+
+## 🧠 How FireGuard AI Works
+
+```text
+                    User Input
+                        │
+          ┌─────────────┴─────────────┐
+          │                           │
+          ▼                           ▼
+   Historical Fire              Environmental /
+      Activity Data               Climate Data
+          │                           │
+          ▼                           ▼
+    Type-1 Model                 Type-2 Model
+          │                           │
+          └─────────────┬─────────────┘
+                        ▼
+                 Hybrid Logic
+                        │
+                        ▼
+                 Final Risk Level
+                        │
+              ┌─────────┴─────────┐
+              ▼                   ▼
+        Risk Dashboard       AI Explanation
+
+✨ Features
+🔥 Hybrid wildfire risk prediction
+📊 Separate Type-1 and Type-2 risk predictions
+🌦️ Environmental/weather input support
+📍 Interactive location selection
+🗺️ Map-based prediction interface
+🚨 High-risk alert system
+🧠 AI-generated risk explanation
+📈 Risk analytics visualization
+📜 Prediction history
+⚡ FastAPI backend
+💻 React-based frontend
+📸 Screenshots
+Main Dashboard
+
+Wildfire Prediction Interface
+
+High-Risk Detection
+
+AI Explanation & Prediction History
+
+🛠️ Tech Stack
+Machine Learning
+Python
+Pandas
+NumPy
+Scikit-learn
+Joblib
+Backend
+FastAPI
+Uvicorn
+Python
+Frontend
+React
+Vite
+JavaScript
+Tailwind CSS
+Leaflet
+Development Tools
+Git
+GitHub
+VS Code
+📁 Project Structure
+fireguard-ai/
+│
+├── abstract/
+│
+├── backend/
+│   ├── main.py
+│   ├── hybrid_logic.py
+│   └── requirements.txt
+│
+├── code/
+│   ├── type1_model.py
+│   ├── type1_preprocess.py
+│   ├── type1_feature_engineering.py
+│   ├── type2_model.py
+│   ├── type2_preprocess.py
+│   ├── type2_feature_engineering.py
+│   └── hybrid_manual_predict.py
+│
+├── frontend/
+│   ├── src/
+│   ├── public/
+│   ├── package.json
+│   └── vite.config.js
+│
+├── literature survey/
+│
+├── models/
+│   ├── type1_model.pkl
+│   └── type2_model.pkl
+│
+├── docs/
+│   └── screenshots/
+│
+├── README.md
+└── .gitignore
+⚙️ Installation
+1. Clone the repository
+git clone https://github.com/Savi-cyber/fireguard-ai.git
+cd fireguard-ai
+🐍 Backend Setup
+
+Navigate to the backend:
+
 cd backend
+
+Create a virtual environment:
+
+python -m venv venv
+
+Activate it on Windows:
+
+venv\Scripts\activate
+
+Install dependencies:
+
 pip install -r requirements.txt
-uvicorn main:app --reload
-```
 
-The API will be available at `http://localhost:8000`.
+Start the FastAPI server:
 
-### Frontend
+python -m uvicorn main:app --reload
 
-```bash
+Backend will run at:
+
+http://127.0.0.1:8000
+
+FastAPI documentation:
+
+http://127.0.0.1:8000/docs
+⚛️ Frontend Setup
+
+Open another terminal.
+
+Navigate to:
+
 cd frontend
+
+Install dependencies:
+
 npm install
-npm start
-```
 
-The dashboard will open at `http://localhost:3000`.
+Start the React development server:
 
----
+npm run dev
 
-## Features
+The frontend will normally run at:
 
-- **Hybrid Risk Logic**: Combines Type‑1 (satellite fire history) and Type‑2 (weather) signals.
-- **Professional UI**: Dark theme, responsive, research‑grade dashboard.
-- **Explainable AI**: Shows why a risk level was assigned.
-- **Visualizations**: Fire history, weather, and hybrid risk meter charts.
-- **Alert System**: Plays alert sound and shows red glow for High risk.
-- **Future Scope**: Collapsible section outlining next steps.
+http://localhost:5173
+🔄 Running the Complete System
 
----
+You need two terminals.
 
-## API Endpoint
+Terminal 1 — Backend
+cd "wildfire prediction\backend"
+venv\Scripts\activate
+python -m uvicorn main:app --reload
+Terminal 2 — Frontend
+cd "wildfire prediction\frontend"
+npm run dev
 
-**POST /predict**
+Then open:
 
-Request body:
-```json
-{
-  "type1": {
-    "fire_count": 42,
-    "avg_frp": 18,
-    "max_frp": 55,
-    "night_fire_ratio": 0.32,
-    "confidence_score": 0.78,
-    "fire_trend": 12
-  },
-  "type2": {
-    "temperature": 32,
-    "humidity": 38,
-    "wind_speed": 6.2,
-    "rainfall": 4
-  }
-}
-```
+http://localhost:5173
+📊 Prediction Pipeline
 
-Response:
-```json
-{
-  "type1_risk": "Medium",
-  "type2_risk": "High",
-  "hybrid_score": 1.48,
-  "final_risk": "High",
-  "explanation": [
-    "High fire history intensity detected",
-    "Elevated temperature and low humidity",
-    "Wind speed favors rapid fire spread"
-  ]
-}
-```
+FireGuard AI follows a two-stage prediction approach.
 
----
+Type-1 — Historical Fire Risk
 
-## Tech Stack
+The Type-1 model evaluates historical/fire-activity related information to estimate the current fire risk.
 
-- **Backend**: Python, FastAPI, Uvicorn, joblib
-- **Frontend**: React, Recharts, Pure CSS, HTML5 Audio API
-- **Models**: Pre‑trained Type‑1 and Type‑2 wildfire risk models (joblib)
+Type-2 — Environmental Risk
 
----
+The Type-2 model evaluates environmental and climate-related conditions that may influence wildfire risk.
 
-## Future Scope
+Hybrid Prediction
 
-- Real‑time weather API integration (OpenWeatherMap)
-- Satellite API integration (NASA FIRMS)
-- Region‑based map visualization
-- Emergency alert system integration
+The two model outputs are combined through the hybrid decision layer to produce the final wildfire risk classification.
+
+Type-1 Risk
+     +
+Type-2 Risk
+     ↓
+Hybrid Decision Logic
+     ↓
+Final Risk
+🎯 Objective
+
+The goal of FireGuard AI is to provide an integrated wildfire risk assessment interface that considers both fire activity and environmental conditions, rather than relying on a single source of information.
+
+🚀 Future Improvements
+Real-time wildfire data integration
+Automated weather API integration
+Satellite-based fire detection
+Larger geographical coverage
+Model performance monitoring
+Explainable AI improvements
+Real-time notifications
+Cloud deployment
+Mobile-friendly interface
+⚠️ Disclaimer
+
+FireGuard AI is a research/academic project intended for experimentation and demonstration. Predictions should not be treated as an official emergency or disaster-management warning system.
+
+👨‍💻 Author
+
+Savithan S
+
+B.Tech Information Technology
+
+Interested in:
+
+Artificial Intelligence
+Machine Learning
+Deep Learning
+Data Science
+AI Engineering
