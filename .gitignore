@@ -1,0 +1,22 @@
+__pycache__/
+*.py[cod]
+
+venv/
+.venv/
+env/
+
+node_modules/
+frontend/dist/
+
+*.csv
+*.xlsx
+*.xls
+
+result/
+
+.vscode/
+.idea/
+
+*.log
+
+review papers/
